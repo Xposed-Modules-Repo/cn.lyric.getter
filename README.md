@@ -1,126 +1,40 @@
-# Xposed Modules Repo Example
+![Release Download](https://img.shields.io/github/downloads/xiaowine/Lyric-Getter/total?style=flat-square)  
+[![Release Version](https://img.shields.io/github/v/release/xiaowine/Lyric-Getter?style=flat-square)](https://github.com/xiaowine/Lyric-Getterreleases/latest)  
+[![GitHub license](https://img.shields.io/github/license/xiaowine/Lyric-Getter?style=flat-square)](LICENSE)  
+[![GitHub Star](https://img.shields.io/github/stars/xiaowine/Lyric-Getter?style=flat-square)](https://github.com/xiaowine/Lyric-Getter/stargazers)  
+[![GitHub Fork](https://img.shields.io/github/forks/xiaowine/Lyric-Getter?style=flat-square)](https://github.com/xiaowine/Lyric-Getter/network/members)  
+![GitHub Repo size](https://img.shields.io/github/repo-size/xiaowine/Lyric-Getter?style=flat-square&color=3cb371)  
+[![GitHub Repo Languages](https://img.shields.io/github/languages/top/xiaowine/Lyric-Getter?style=flat-square)](https://github.com/xiaowine/Lyric-Getter/search?l=koltin)  
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2F577fkj%2FStatusBarLyric%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/xiaowine/Lyric-Getter/goto?ref=main)  
+![GitHub Star](https://img.shields.io/github/stars/xiaowine/Lyric-Getter.svg?style=social)
 
-You may only upload your own modules. If you have explicit permission from a developer to upload their module, it is fine as well, but both of you need to keep in mind that the uploader's name will be mentioned as author.
-Obviously, modules must be compliant with the law and must not act in malicious ways. The operator of this site will not take any responsibility (or give support) for uploaded modules.
+# 这是什么东西？
 
-Only default branches will be processed.
+#### 这是一个Xposed模块（现支持LSPosed\LSPatch），通过Hook获取音乐软件的歌词，提供给其他模块\软件使用
 
-## Informations
+# 为什么我的歌词不隐藏？
 
-### Module name *
+### 因为模块通过监听媒体通知事件，来判断是否应该隐藏歌词。而部分音乐软件默认通知样式为自定义的，所以需要将通知样式改为系统样式
 
-The Description of repository details.
+> 支持软件
 
-### Package *
+- 网易云音乐（需8.0.40以上开启状态栏歌词，其余开启车载歌词）
+- 酷狗音乐（需开启车载歌词）
+- 酷狗音乐概念版（需开启车载歌词）
+- 酷我音乐（需开启车载歌词）
+- QQ音乐（需开启状态栏歌词）
+- 洛雪音乐（需开启桌面歌词）
+- 小米音乐（需开启车载歌词）
+- 魅族音乐（需开启车载歌词）
+- 咪咕音乐（需开启状态栏歌词，新版由于咪咕移除，已无法使用）
+- RPlayer（需开启车载歌词）
+- APlayer（需开启状态栏歌词）
+- 汽水音乐（需佩戴耳机）（需开启车载歌词）  
+  `使用API的音乐软件不在README中，并且可能不在模块作用域中，具体需要开启哪些功能请自行测试`  
+  截至 1.0.0.2 版本
 
-The repository name.
+---
 
-> The package name of the app - has to be the same for all versions!
+## Star History
 
-### Summary
-
-Contents in [SUMMARY](SUMMARY) file.
-
-> A brief description of the module, will be displayed outside the list, no formatting is supported.
-> Leave blank to use trimmed value of full text as the summary.
-
-### Description *
-
-Contents in [README.md](README.md) file.
-
-### Support/Discussion URL *
-
-The Website of repository details.
-
-> Link to a site where users can get support for and discuss about your module. (e.g. your XDA thread)
-
-### Source code URL
-
-Contents in [SOURCE_URL](SOURCE_URL) file, any line breaks (\r & \n) will disappear.
-
-> Link to the source code of your module if you published it.
-
-### Additional authors
-
-Json in [ADDITIONAL_AUTHORS](ADDITIONAL_AUTHORS) file.
-
-|  Field  |  Type  |  Description  |  Optional  |
-|  ----  |  ----  |  ----  |  ----  |
-| `type`  | String |  "add" or "remove"  |  No  |
-| `name`  | String |  The name of author  |  No  |
-| `link`  | String |  The link of author  |  Yes  |
-
-Example: 
-```json
-[{
-	"type": "add",
-	"name": "exampleAuthorA",
-	"link": "http://example.author/A/user/link"
-}, {
-	"type": "add",
-	"name": "exampleAuthorB",
-	"link": "http://example.author/B/user/link"
-}, {
-	"type": "add",
-	"name": "exampleAuthorC"
-}, {
-	"type": "remove",
-	"name": "someoneInContributorsWillRemove"
-}]
-```
-
-> In case you have developed the module together with somebody else, but they don't have a GitHub account. You can write their names and links into the file.
-> All `Outside Collaborators` in this repository will be added by default.
-
-### Visibility
-
-If you want to hide the module from the repository temporarily, you can change repository to private in Repository Settings.
-
-If you just want the module not to be displayed in the website page or manager, create a [HIDE](HIDE) file.
-
-## Versions
-
-We use GitHub releases as a version update.
-
-### Version name *
-
-The Release Title.
-
-> This is the human-readable version number.
-
-### Version code *
-
-The Release Tag.
-
-> The technical version, used when checking for updates. Newer versions always need to have a higher number than previous versions.
-
-### Release type *
-
-`This is a pre-release` check box.
-
-experimental has been merged with beta
-
-|  Type  |  Type  |
-|  ----  |  ----  |
-| Stable (low risk of bugs)  | Release |
-| Beta (some bugs to be expected)  | Pre-release |
-| Experimental (high risk of bugs)  | Pre-release |
-
-> Classification how risky it is for users to install this version. By default, only stable versions will be shown.
-
-### Changes
-
-The Release Description.
-
-> A list of changes (new features, bugfixes) in this particular version.
-
-## Module Activation Scope
-
-Json array in [SCOPE](SCOPE) file.
-
-This recommended configuration is used when the module does not provide its own scope.
-
-Example: 
-```json
-["android", "com.android.settings"]
-```
+[![Star History Chart](https://api.star-history.com/svg?repos=xiaowine/Lyric-Getter&type=Timeline)](https://star-history.com/#xiaowine/Lyric-Getter&Timeline)
